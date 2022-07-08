@@ -1,0 +1,2 @@
+# block mobile YouTube to prevent usage via Safari
+m.youtube.com^$important,ctag=user_child

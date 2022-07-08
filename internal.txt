@@ -1,0 +1,40 @@
+# DNS rewrites for seamless internal/external DoH
+dns.familiamichels.com.br^$dnsrewrite=NOERROR;A;172.16.0.250,client=172.16.0.0/24
+dns.familiamichels.com.br^$dnsrewrite=NOERROR;A;172.16.128.10,client=172.16.128.0/23
+dns-int.familiamichels.com.br^$dnsrewrite=NOERROR;A;172.16.0.250,client=172.16.0.0/24
+dns-int.familiamichels.com.br^$dnsrewrite=NOERROR;A;172.16.128.10,client=172.16.128.0/23
+
+# block mobile YouTube to prevent usage via Safari
+m.youtube.com^$important,ctag=user_child
+
+# Allow NTP everywhere
+@@||ntp.org^$important
+
+# Appliances
+*$client=Bosch-Refrigerator,denyallow=homeconnecthca.com|homeconnectegw.com|ocsp-rna-prod.apps.eks-core.reu.bsh-lando.com|eks-core-in-http-pub-639975057.eu-central-1.elb.amazonaws.com
+*$client=GE-Dishwasher|GE-Wall-Oven,denyallow=geappliances.com|wcacloudapi.net|iot.us-east-1.amazonaws.com
+$client=Nespresso-Vertuo,denyallow=iot.eu-west-1.amazonaws.com
+
+# Blinds
+*$client=PowerView-Hub-Closet|PowerView-Hub-Guest-Bedroom,denyallow=hunterdouglas.com|firmware.powerviewmotorization.com|data.iot.us-west-2.amazonaws.com|hdnaws-lb-prd01-775893875.us-east-1.elb.amazonaws.com
+
+# Cameras
+*$client=Living-Room-Camera,denyallow=ecobee.com|mqtt.2030.ltsapis.goog|cloud-iot-mqtt.l.google.com|arthurbee.cocoon.life
+*$client=Logitech-Entrance-Doorbell,denyallow=logi.com|us-west-2.compute.amazonaws.com
+*$client=Amcrest-Left|Amcrest-Patio|Amcrest-Right,denyallow=amcrest.com
+
+# Garage Door
+*$client=Garage-Door,denyallow=myqdevice.com|myq-cloud.com|myq-connect-ca.trafficmanager.net
+
+# Sprinkler System
+*$client=Rain-Bird-ESP-TM2,denyallow=rainbird.com|amazon.com|cloudfront.net|www.google.com|www.amazon.com.edgekey.net|akamaiedge.net
+
+# Switches
+*$client=Meross-Switch-Coach-Lights|Meross-Switch-Front-Lights,denyallow=meross.com
+
+# Thermostats
+*$client=Downstairs-Ecobee|Upstairs-Ecobee,denyallow=ecobee.com
+
+# Vacuums
+#*$client=Roborock-Vacuum-S7MaxV,denyallow=fds.api.xiaomi.com|fds.api.mi-img.com|elb-hadoop-awsur0-fds-tcp-1480307696.us-west-2.elb.amazonaws.com
+*$client=Roomba,denyallow=irobotapi.com
